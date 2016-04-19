@@ -1,0 +1,56 @@
+.container {
+	padding-top: 15px;
+	padding-left: 2em;
+}
+
+h5 {
+	padding-top: 3px;
+}
+
+legend {
+	font-weight: bold;
+}
+
+.ask {
+	margin-right: 3em;
+	width: 80%;
+}
+
+#askbutton {
+	margin-top: 10px;
+}
+
+#submit {
+	margin-right: 20px;
+}
+
+.address {
+	width: 85%;
+	padding-top: 15px;
+}
+
+.resizer {
+	width: 85%;
+}
+
+.textarearesizer {
+	width: 85%;
+	height: 7em;
+}
+
+.space {
+	padding-top: 30px;
+}
+
+#space1 {
+	padding-top: 3em; 
+	text-align: right; 
+	padding-right: 10em;
+}
+
+#space2 {
+	padding-left: 3em;
+}
+
+
+
