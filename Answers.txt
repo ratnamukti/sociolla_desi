@@ -1,0 +1,9 @@
+FRONT-END DEVELOPMENT INTERN TECHNICAL TEST
+Desi Ratna Mukti Umpuan
+desi.rmu@gmail.com
+
+Questions:
+1. How do you prevent the user from submitting the form prematurely when the user hit enter?
+
+
+2. How do you add validation and error messages to the form?

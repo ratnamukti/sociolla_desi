@@ -12,16 +12,20 @@ $(document).ready(function(){
 
 	$("#submit").click(function(){
 		$.post( "submit.php", $( "#form1" ).serialize()).done(function(data) {
-			//alert("Data loaded: " + data);
+			alert("Data loaded: " + data);
 		});
 	});
 
 
 	$("#askbutton").click(function(){
 		$.post( "submit.php", $( "#form1" ).serialize()).done(function(data) {
-			//alert("Data loaded: " + data);
+			alert("Data loaded: " + data);
 		});
 	});
+
+	document.getElementById('form1').onsubmit= function(e){
+     e.preventDefault();
+}
 });
 
 </script>
@@ -36,7 +40,7 @@ $(document).ready(function(){
 			</div>
 
 			<div class="column eight wide" id="space1">
-				<button type="submit" form="cpform" id="submit" class="ui primary button" value="Submit">Submit</button>
+				<button type="submit" form="cpform" id="submit" class="ui primary button" onclick="submitform()" value="Submit">Submit</button>
 				<a class="ui button" href="index.html">Cancel</a>
 			</div>
 		</div>
