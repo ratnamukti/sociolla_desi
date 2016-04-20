@@ -5,5 +5,7 @@ desi.rmu@gmail.com
 Questions:
 1. How do you prevent the user from submitting the form prematurely when the user hit enter?
 
+	I use JQuery to check every input in the form when the submit button is clicked.
 
 2. How do you add validation and error messages to the form?
+	I add span attributes in the bottom of every text input to contain the error message. The error message itself is defined in the JQuery script when it's checking every input text. If it's empty, then the error message will be printed in the span attribute.
