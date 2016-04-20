@@ -26,7 +26,7 @@ $question = $_POST["question"];
         if(!$validdesc) $_SESSION["errordescription"] = "*description could not be empty"; 
         if(!$validstreet) $_SESSION["errorstreet"] = "*street could not be empty"; 
         if(!$validcity) $_SESSION["errorcity"] = "*city could not be empty";
-        if(!$validpostal) $_SESSION["errorpostal"] = "*postalcode could not be empty";  
+        if(!$validpostal) $_SESSION["errorpostal"] = "*postal code could not be empty";  
         if(!$validquestion) $_SESSION["errorquestion"] = "*please fill your question";
     }
 }

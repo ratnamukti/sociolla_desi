@@ -15,6 +15,21 @@ session_start();
 $(document).ready(function(){
 
 	$("#submit").click(function(){
+		var x = $("#form1 input").val();
+		if(x==''){
+			$("span#errname").html("xxx");
+		}
+	});
+
+    $("#province_id").change(function(){
+      $("#province_hidden").val(("#province_id").val());
+    });
+
+	$("#form2").submit(function(e){
+    	return false;
+	});
+
+	$("#submit").click(function(){
 		$.post( "submit.php", $( "#form1" ).serialize()).done(function(data) {
 			alert("Data loaded: " + data);
 		});
@@ -22,7 +37,7 @@ $(document).ready(function(){
 
 
 	$("#askbutton").click(function(){
-		$.post( "submit.php", $( "#form3" ).serialize()).done(function(data) {
+		$.post( "submit.php", $( "#form2" ).serialize()).done(function(data) {
 			alert("Data loaded: " + data);
 		});
 	});
@@ -40,7 +55,7 @@ $(document).ready(function(){
 			</div>
 
 			<div class="column eight wide" id="space1">
-				<button type="submit" form="cpform" id="submit" class="ui primary button" onclick="submitform()" value="Submit">Submit</button>
+				<button type="submit" form="cpform" id="submit" class="ui primary button" value="Submit">Submit</button>
 				<a class="ui button" href="index.html">Cancel</a>
 			</div>
 		</div>
@@ -55,12 +70,7 @@ $(document).ready(function(){
 			<form id="form1" class="formedit" action = "submit.php" method = "POST">
 				<h5>Name</h5>
 				<input id="name" class="resizer" name="name" autocomplete="on" required><br>
-				<?php 
-				if(isset($_SESSION["errorname"])){
-					echo $_SESSION["errorname"];
-                    $_SESSION["errorname"] = "";
-				}
-				?>
+				<span class="errmsg" id="errname"></span>
 
 				<h5>Description</h5>
 				<textarea name="description" class="textarearesizer" id="description" required></textarea>
@@ -70,15 +80,12 @@ $(document).ready(function(){
                     $_SESSION["errordesc"] = "";
 				}
 				?>				
-			</form>
-
-
 
 
 			<div class="address">
 					<fieldset>
 						<legend>Address</legend>
-						<form method="get" class="formedit" id="form2" action="">
+
 							<h5>Street</h5>
 							<input id="street" class="resizer" name="street" autocomplete="on" required><br>
 							<?php 
@@ -95,11 +102,11 @@ $(document).ready(function(){
 							<div class="ui grid column sixteen wide">
 								<div class="column eight wide">
 									<h5 class="space">Province</h5>
-									<select class="ui dropdown">
-									  <option value="0">Jakarta</option>
-									  <option value="1">Jawa Barat</option>
-									  <option value="2">Jawa Tengah</option>
-									  <option value="3">Banten</option>
+									<select name="province-y" id="province_id" class="ui dropdown">
+									  <option value="Jakarta">Jakarta</option>
+									  <option value="Jawa Barat">Jawa Barat</option>
+									  <option value="Jawa Tengah">Jawa Tengah</option>
+									  <option value="Banten">Banten</option>
 									</select><br>
 								</div>
 
@@ -126,13 +133,13 @@ $(document).ready(function(){
 		<div class="ask">
 			<fieldset>
 				<legend>Ask Us</legend>
-				<form method="POST" class="formedit" id="form3" action="submit.php">
-					<h5>Divisions</h5>
-					<select class="ui dropdown">
-					  <option value="0">Technology</option>
-					  <option value="1">Marketing</option>
-					  <option value="2">Editorial</option>
-					  <option value="3">Finance</option>
+				<form method="POST" class="formedit" id="form2" action="submit.php">
+					<h5>Division</h5>
+					<select name="division-x" id="division_id" class="ui dropdown">
+					  <option value="Technology" selected>Technology</option>
+					  <option value="Marketing">Marketing</option>
+					  <option value="Editorial">Editorial</option>
+					  <option value="Finance">Finance</option>
 					</select>
 
 					<h5>Name</h5>
@@ -153,7 +160,7 @@ $(document).ready(function(){
 					}
 					?>
 
-					<button type="submit" class="ui primary button" form="cpform" value="Submit" id="askbutton">Submit</button>
+					<button type="submit" class="ui primary button" name='submit' value="Send" id="askbutton">Send</button>
 				</form>
 			</fieldset>	
 		</div>
