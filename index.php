@@ -82,6 +82,10 @@ $(document).ready(function(){
     	return false;
 	});
 
+	$("#cancel").click(function(){
+		$('#form1').find("input, textarea").val("");
+	});
+
 });
 
 </script>
@@ -97,7 +101,7 @@ $(document).ready(function(){
 
 			<div class="column eight wide" id="space1">
 				<button type="submit" form="cpform" id="submit" class="ui primary button" value="Submit">Submit</button>
-				<a class="ui button" href="index.html">Cancel</a>
+				<a class="ui button" id="cancel" href="#">Cancel</a>
 			</div>
 		</div>
 	</div>
