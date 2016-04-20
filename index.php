@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+session_start();
+?>
 <html lang="">
 <head>
 <meta charset="UTF-8">
@@ -6,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="Semantic-UI/semantic.min.css">
 <link rel="stylesheet" type="text/css" href="style.css">
 <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
 <script>
 $(document).ready(function(){
@@ -22,10 +26,6 @@ $(document).ready(function(){
 			alert("Data loaded: " + data);
 		});
 	});
-
-	document.getElementById('form1').onsubmit= function(e){
-     e.preventDefault();
-}
 });
 
 </script>
@@ -45,6 +45,9 @@ $(document).ready(function(){
 			</div>
 		</div>
 	</div>
+
+
+
 		
 <div class="ui grid column sixteen wide">
 	<div class="column eight wide" id="space2">
@@ -52,10 +55,25 @@ $(document).ready(function(){
 			<form id="form1" class="formedit" action = "submit.php" method = "POST">
 				<h5>Name</h5>
 				<input id="name" class="resizer" name="name" autocomplete="on" required><br>
+				<?php 
+				if(isset($_SESSION["errorname"])){
+					echo $_SESSION["errorname"];
+                    $_SESSION["errorname"] = "";
+				}
+				?>
 
 				<h5>Description</h5>
 				<textarea name="description" class="textarearesizer" id="description" required></textarea>
+				<?php 
+				if(isset($_SESSION["errordesc"])){
+					echo $_SESSION["errordesc"];
+                    $_SESSION["errordesc"] = "";
+				}
+				?>				
 			</form>
+
+
+
 
 			<div class="address">
 					<fieldset>
@@ -63,6 +81,13 @@ $(document).ready(function(){
 						<form method="get" class="formedit" id="form2" action="">
 							<h5>Street</h5>
 							<input id="street" class="resizer" name="street" autocomplete="on" required><br>
+							<?php 
+							if(isset($_SESSION["errorstreet"])){
+								echo $_SESSION["errorstreet"];
+			                    $_SESSION["errorstreet"] = "";
+							}
+							?>
+
 
 							<h5>City</h5>
 							<input id="city" class="resizer" name="city" autocomplete="on" required><br>
@@ -82,6 +107,13 @@ $(document).ready(function(){
 								<div class="column eight wide">
 									<h5 class="space">Postal Code</h5>
 									<input id="postalcode" class="form-input" name="postalcode" autocomplete="on" required><br>
+									<?php 
+									if(isset($_SESSION["errorpostal"])){
+										echo $_SESSION["errorpostal"];
+					                    $_SESSION["errorpostal"] = "";
+									}
+									?>
+
 								</div>
 							</div>
 						</form>
@@ -94,7 +126,7 @@ $(document).ready(function(){
 		<div class="ask">
 			<fieldset>
 				<legend>Ask Us</legend>
-				<form method="get" class="formedit" id="form3" action="">
+				<form method="POST" class="formedit" id="form3" action="submit.php">
 					<h5>Divisions</h5>
 					<select class="ui dropdown">
 					  <option value="0">Technology</option>
@@ -105,9 +137,21 @@ $(document).ready(function(){
 
 					<h5>Name</h5>
 					<input id="askname" class="resizer" name="askname" autocomplete="on" required><br>
+					<?php 
+					if(isset($_SESSION["errorname2"])){
+						echo $_SESSION["errorname2"];
+	                    $_SESSION["errorname2"] = "";
+					}
+					?>
 
 					<h5>Questions</h5>
-					<textarea name="questions" id="questions" class="textarearesizer" required></textarea><br>
+					<textarea name="question" id="question" class="textarearesizer" required></textarea><br>
+					<?php 
+					if(isset($_SESSION["errorquestion"])){
+						echo $_SESSION["errorquestion"];
+	                    $_SESSION["errorquestion"] = "";
+					}
+					?>
 
 					<button type="submit" class="ui primary button" form="cpform" value="Submit" id="askbutton">Submit</button>
 				</form>
