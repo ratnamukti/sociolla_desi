@@ -20,22 +20,14 @@ $question = $_POST["question"];
         $validdesc = $validstreet = $validcity = $validpostal = $validquestion = true;
     }
 
-
-    if($validusername && $validemail && $validpassword){
-        //$db = pg_connect("host=ipin.cs.ui.ac.id dbname=ppw user=ppw password=ppw123");
-        $db = mysqli_connect("localhost", "root", "", "ppw") or die("Could not connect");
-
-        $query = pg_query($db, "SET search_path TO '1306397904';INSERT INTO users values ('".$username."', '".$email."','".md5($password)."');");
-        //mysqli_query($db, $query);
-        header("location: login.php");
-    } else {
+    if {
         if(!$validname) $_SESSION["errorname"] = "*invalid name format"; 
         if(!$validname2) $_SESSION["errorname2"] = "*invalid name format";    
         if(!$validdesc) $_SESSION["errordescription"] = "*description could not be empty"; 
-        if(!$validstreet) $_SESSION["errorstreet"] = "*description could not be empty"; 
-        if(!$validpassword) $_SESSION["errorpassword"] = "*password did not match";
-        
-        header("Location: register.php");
+        if(!$validstreet) $_SESSION["errorstreet"] = "*street could not be empty"; 
+        if(!$validcity) $_SESSION["errorcity"] = "*city could not be empty";
+        if(!$validpostal) $_SESSION["errorpostal"] = "*postalcode could not be empty";  
+        if(!$validquestion) $_SESSION["errorquestion"] = "*please fill your question";
     }
 }
 ?>
